@@ -20,21 +20,25 @@ class RedeNeural {
 
     feedForFoward(entrada) {
 
-        // ENTRADA -> OCULTO
         let matrixEntrada = Matrix.arrayToMatrix(entrada)
+        let matrixOculta = this._matrixEntradaParaMatrixOculta(matrixEntrada)
+        let matrixSaida = this._matrixOcultaParaMatrixSaida(matrixOculta)
+        return matrixSaida
+    }
 
-        let matrixOculto = Matrix.multiply(this._weightsEntradaParaOculto, matrixEntrada)
+    _matrixEntradaParaMatrixOculta(matrixEntrada){
 
-        matrixOculto = Matrix.add(matrixOculto, this._biasEntradaParaOculto)
+        let matrixOculta = Matrix.multiply(this._weightsEntradaParaOculto, matrixEntrada)
+        matrixOculta = Matrix.add(matrixOculta, this._biasEntradaParaOculto)
+        matrixOculta.map((row, col, value) => Funcoes.sigmoid(value) )
+        return matrixOculta
+    }
 
-        matrixOculto.map((row, col, value) => Funcoes.sigmoid(value) )
-
-        //OCULTO -> SAIDA
-
-        let matrixSaida = Matrix.multiply(this._weightsOcultoParaSaida, matrixOculto)
-        Matrix.add(matrixSaida, this._biasOcultoParaSaida)
-        matrixSaida.print()
+    _matrixOcultaParaMatrixSaida(matrixOculta){
         
+        let matrixSaida = Matrix.multiply(this._weightsOcultoParaSaida, matrixOculta)
+        matrixSaida = Matrix.add(matrixSaida, this._biasOcultoParaSaida)
+        return matrixSaida
     }
 
 }
