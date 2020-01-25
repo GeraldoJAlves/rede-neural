@@ -1,13 +1,8 @@
 function setup() {
-    let matrix = new Matrix(1, 2);
-    let matrix2 = new Matrix(2, 1);
+    
+    let redeNeural = new RedeNeural(1,3,1)
+    redeNeural.feedForFoward([1,2]);
 
-    matrix.print();
-    matrix2.print();
-
-    resultado = Matrix.multiply(matrix, matrix2);
-
-    resultado.print();
 }
 
 function draw() {

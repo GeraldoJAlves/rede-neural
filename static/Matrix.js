@@ -9,10 +9,14 @@ class Matrix {
         for(let i = 0; i < rows; i++){
             let tempData = [];
             for(let j = 0; j < cols; j++){
-                tempData.push(Math.floor(Math.random()*10))
+                tempData.push(0)
             }
             this._data.push(tempData)
         }
+    }
+
+    randomize(){
+        return this.map( (row, col) => Math.random() * 2 -1 )
     }
 
     map(func){
@@ -25,16 +29,13 @@ class Matrix {
         return this
     }
 
-    get cols(){
-        return this._cols
+    static map(Matrix, func){
+        console.log('teste')
     }
-
-    get rows(){
-        return this._rows
-    }
-
-    get data(){
-        return [].concat(this._data)
+    
+    static arrayToMatrix(array){
+        let matrix = new Matrix(array.length, 1)
+        return matrix.map( (row, col) => array[row] )
     }
 
     static add(matrixUm, matrixDois){
@@ -50,18 +51,30 @@ class Matrix {
         let matrixResultado = new Matrix(matrixUm.rows, matrixDois.cols);
 
         matrixResultado.map( (row, col) => {
-            let soma = 0;
-            for(let matrixDoisRow = 0; matrixDoisRow < matrixDois.rows; matrixDoisRow++){
-                let elementoUm = matrixUm.data[row][matrixDoisRow];
-                let elementoDois = matrixDois.data[matrixDoisRow][col];
-                soma+= elementoUm * elementoDois;
+            let soma = 0
+            for(let matrixUmCol = 0; matrixUmCol < matrixUm.cols; matrixUmCol++){
+                let elementoUm = matrixUm.data[row][matrixUmCol]
+                let elementoDois = matrixDois.data[matrixUmCol][col]
+                soma+= elementoUm * elementoDois
             }
-            return soma;
-        });
+            return soma
+        })
 
-        return matrixResultado;
+        return matrixResultado
     }
-    
+
+    get cols(){
+        return this._cols
+    }
+
+    get rows(){
+        return this._rows
+    }
+
+    get data(){
+        return [].concat(this._data)
+    }
+
     print(){
         console.table(this._data)
     }
