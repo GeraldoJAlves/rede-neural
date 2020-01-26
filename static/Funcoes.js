@@ -4,6 +4,10 @@ class Funcoes {
     }
 
     static sigmoid(x){
-        return 1 / (1 + Math.exp(x) )
+        return 1 / (1 + Math.exp(-x) )
+    }
+
+    static dsigmoid(x){
+        return x * (1-x)
     }
 }

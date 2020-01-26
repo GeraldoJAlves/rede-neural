@@ -28,9 +28,11 @@ class Matrix {
 
         return this
     }
-
-    static map(Matrix, func){
-        console.log('teste')
+    
+    static map(matrix, func){
+        let novaMatrix = new Matrix(matrix.rows, matrix.cols)
+        novaMatrix.map( (row,col) => matrix.data[row][col] )
+        return novaMatrix.map(func)
     }
     
     static arrayToMatrix(array){
@@ -38,11 +40,56 @@ class Matrix {
         return matrix.map( (row, col) => array[row] )
     }
 
+    static toArray(matrix){
+        let array = []
+        matrix.map( (row, col, value) => {
+            array.push(value)
+        })
+
+        return array
+    }
+
+    static transpose(matrix){
+
+        let matrixResultado = new Matrix(matrix.cols, matrix.rows)
+
+        matrixResultado.map( (row, col) =>  matrix.data[col][row] )
+
+        return matrixResultado
+    }
+
+    static hadamart(matrixUm, matrixDois){
+
+        let matrixResultado = new Matrix(matrixUm.rows, matrixDois.cols)
+
+        matrixResultado.map( (row, col) => matrixUm.data[row][col] * matrixDois.data[row][col] )
+
+        return matrixResultado
+    }
+
+    static subtract(matrixUm, matrixDois){
+
+        let matrixResultado = new Matrix(matrixUm.rows, matrixDois.cols)
+
+        matrixResultado.map( (row, col) =>  matrixUm.data[row][col] - matrixDois.data[row][col] )
+
+        return matrixResultado
+    }
+
     static add(matrixUm, matrixDois){
 
         let matrixResultado = new Matrix(matrixUm.rows, matrixDois.cols)
 
         matrixResultado.map( (row, col) =>  matrixUm.data[row][col] + matrixDois.data[row][col] )
+
+        return matrixResultado
+    }
+
+    static escalarMultiply(matrix, escalar){
+        let matrixResultado = new Matrix(matrix.rows, matrix.cols);
+        matrixResultado.map( (row, col, value) =>  {
+            return matrix.data[row][col] * escalar
+        } )
 
         return matrixResultado
     }
