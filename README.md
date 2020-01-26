@@ -1,5 +1,5 @@
 # redeNeuralJs
-Rede neural básica
+Rede neural básica com javascript e p5
 
 
 <h2>Descrição</h2>
