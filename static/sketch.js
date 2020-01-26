@@ -1,6 +1,6 @@
 
 let dataset = {}
-let continuaTreino = false
+let continuaTreino = true
 let limiteTeste = 10000
 let redeNeural
 
@@ -35,15 +35,15 @@ function draw() {
             redeNeural.traine(dataset.inputs[index], dataset.output[index])
             numTeste++
         }
-        let testeUm = redeNeural.predict([1,6,6])[0] > 5
-        let testeDois = redeNeural.predict([1,9,9])[0] > 8
+        let testeUm = redeNeural.predict([1,1])[0] > 0.991
+        let testeDois = redeNeural.predict([1,0])[0] < 0.004
         if(testeUm && testeDois){
             continuaTreino = false
             console.log("rede treinada com sucesso")
         }else{
             console.clear()
-            console.log("testeTrue: "  + redeNeural.predict([0,1])[0])
-            console.log("testeFalse: " + redeNeural.predict([1,3,4])[0])
+            console.log(" 1 0 = "  + redeNeural.predict([0,1])[0])
+            console.log(" 1 1 = " + redeNeural.predict([1,1])[0])
             console.log("ainda treinando")
         }
     }
