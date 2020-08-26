@@ -6,7 +6,6 @@ Rede Neural - JS
 
 - [x] javascript
 - [x] node
-- [x] TypeScript
 
 ## Starting Dev Environment
 
@@ -15,5 +14,5 @@ Rede Neural - JS
 
 ## Objetivos
 
-- Montar os calculos necessarios para uma rede neural em javascript
+- Cálculos necessários para uma rede neural.
 
