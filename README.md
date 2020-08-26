@@ -1,14 +1,19 @@
-# redeNeuralJs
-Rede neural básica com javascript e p5
+<h1 align="center">
+Rede Neural - JS
+</h1>
 
+## Techs
 
-<h2>Descrição</h2>
-Simples utilização para Xor
+- [x] javascript
+- [x] node
+- [x] TypeScript
 
-<h2>Instalação</h2>
+## Starting Dev Environment
 
-<code>npm install</code>
+1. Run `npm install` or `yarn install`.<br />
+2. Run `npm start` and access `http://localhost:3000`.<br />
 
-<code>node server.js</code>
+## Objetivos
 
-Acesse na link http://localhost:3000
+- Montar os calculos necessarios para uma rede neural em javascript
+
