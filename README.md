@@ -15,4 +15,3 @@ Rede Neural - JS
 ## Objetivos
 
 - Cálculos necessários para uma rede neural.
-
